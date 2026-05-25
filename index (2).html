@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AZA Contabilidade Integrada | Perícia Contábil e Pregão Eletrônico</title>
+  <meta name="description" content="Escritório especializado em perícia judicial e extrajudicial, pregão eletrônico e licitações públicas. CNPJ 55.706.108/0001-96 | CRC-RS 011015/O-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0d1b2a;
+      --navy-mid: #1a2e45;
+      --navy-light: #243b55;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --gold-pale: #f5e8c5;
+      --cream: #f8f4ee;
+      --cream-dark: #ede7da;
+      --text-dark: #0d1b2a;
+      --text-mid: #3a4a5c;
+      --text-muted: #6b7a8d;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(13,27,42,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201,168,76,0.25);
+    }
+    .nav-inner {
+      max-width: 1140px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--gold-light); text-decoration: none; letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--white); font-weight: 400; font-size: 0.85rem; display: block; letter-spacing: 0.08em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      font-size: 0.875rem; letter-spacing: 0.04em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-cta {
+      background: var(--gold); color: var(--navy) !important;
+      padding: 0.5rem 1.25rem; border-radius: 2px;
+      font-weight: 500; transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+        linear-gradient(135deg, rgba(26,46,69,0.8) 0%, transparent 60%);
+    }
+    .hero-lines {
+      position: absolute; right: 0; top: 0; bottom: 0; width: 45%;
+      background-image: repeating-linear-gradient(
+        90deg, rgba(201,168,76,0.04) 0px, rgba(201,168,76,0.04) 1px,
+        transparent 1px, transparent 40px
+      );
+    }
+    .hero-inner {
+      max-width: 1140px; margin: 0 auto; padding: 8rem 2rem 4rem;
+      position: relative; z-index: 1;
+    }
+    .hero-eyebrow {
+      font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); display: block; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      font-weight: 700; line-height: 1.15;
+      color: var(--white); max-width: 680px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em { color: var(--gold-light); font-style: normal; }
+    .hero-sub {
+      font-size: 1.1rem; color: rgba(255,255,255,0.65);
+      max-width: 520px; margin-bottom: 3rem; font-weight: 300;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: var(--navy);
+      padding: 0.875rem 2rem; border-radius: 2px;
+      font-weight: 500; text-decoration: none; font-size: 0.9rem;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-outline {
+      border: 1px solid rgba(201,168,76,0.5); color: var(--gold-light);
+      padding: 0.875rem 2rem; border-radius: 2px;
+      font-weight: 400; text-decoration: none; font-size: 0.9rem;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+    .hero-stats {
+      display: flex; gap: 3rem; margin-top: 5rem;
+      border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .stat-item { }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 700; color: var(--gold-light);
+      line-height: 1;
+    }
+    .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 0.25rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 2rem; }
+    .section-inner { max-width: 1140px; margin: 0 auto; }
+    .section-tag {
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 700; color: var(--text-dark);
+      line-height: 1.2; margin-bottom: 1.25rem;
+    }
+    .section-lead {
+      font-size: 1.05rem; color: var(--text-mid);
+      max-width: 580px; font-weight: 300;
+    }
+
+    /* ── SERVICES ── */
+    #servicos { background: var(--cream); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2px; margin-top: 4rem;
+      border: 1px solid var(--cream-dark);
+    }
+    .service-card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--cream-dark);
+      transition: border-color 0.25s, transform 0.2s;
+      position: relative;
+    }
+    .service-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+    .service-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; font-weight: 700;
+      color: var(--cream-dark); line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .service-icon {
+      width: 48px; height: 48px;
+      background: var(--navy); border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .service-icon svg { width: 24px; height: 24px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; font-weight: 600;
+      color: var(--text-dark); margin-bottom: 0.75rem;
+    }
+    .service-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+    .service-card ul { margin-top: 1rem; padding-left: 0; list-style: none; }
+    .service-card ul li {
+      font-size: 0.875rem; color: var(--text-mid);
+      padding: 0.3rem 0;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+    .service-card ul li::before {
+      content: '—'; position: absolute; left: 0;
+      color: var(--gold); font-size: 0.75rem;
+    }
+    .service-accent {
+      position: absolute; top: 0; left: 0;
+      width: 3px; height: 0;
+      background: var(--gold);
+      transition: height 0.3s ease;
+    }
+    .service-card:hover .service-accent { height: 100%; }
+
+    /* ── ABOUT ── */
+    #sobre { background: var(--navy); }
+    #sobre .section-title { color: var(--white); }
+    #sobre .section-lead { color: rgba(255,255,255,0.6); }
+    #sobre .section-tag { color: var(--gold); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 4rem; }
+    .about-text p { color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-bottom: 1.25rem; font-weight: 300; }
+    .about-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+    .highlight-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.2);
+      padding: 1.25rem 1rem;
+      border-radius: 2px;
+    }
+    .highlight-item strong {
+      display: block; font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; color: var(--gold-light); margin-bottom: 0.25rem;
+    }
+    .highlight-item span { font-size: 0.8rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.05em; }
+    .about-credentials { border-left: 2px solid rgba(201,168,76,0.3); padding-left: 2rem; }
+    .credential-item { margin-bottom: 2rem; }
+    .credential-item .label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+    .credential-item .value { color: var(--white); font-size: 0.95rem; }
+    .credential-item .detail { color: rgba(255,255,255,0.5); font-size: 0.85rem; font-weight: 300; }
+
+    /* ── CONTACT ── */
+    #contato { background: var(--cream); }
+    .contact-wrapper { display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; margin-top: 4rem; }
+    .contact-info { }
+    .contact-info p { color: var(--text-mid); font-size: 0.95rem; margin-bottom: 2rem; font-weight: 300; }
+    .contact-items { display: flex; flex-direction: column; gap: 1.25rem; }
+    .contact-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1.25rem;
+      background: var(--white);
+      border: 1px solid var(--cream-dark);
+      border-radius: 2px;
+      transition: border-color 0.2s;
+    }
+    .contact-item:hover { border-color: var(--gold); }
+    .contact-item a { text-decoration: none; color: inherit; }
+    .ci-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: var(--navy); border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ci-icon svg { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+    .ci-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
+    .ci-value { font-size: 0.95rem; color: var(--text-dark); font-weight: 500; }
+
+    /* ── FORM ── */
+    .contact-form { background: var(--white); padding: 2.5rem; border: 1px solid var(--cream-dark); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    label { display: block; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.5rem; }
+    input, select, textarea {
+      width: 100%; padding: 0.75rem 1rem;
+      background: var(--cream); border: 1px solid var(--cream-dark);
+      border-radius: 2px; font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; color: var(--text-dark);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--gold); background: var(--white); }
+    textarea { resize: vertical; min-height: 130px; }
+    .btn-submit {
+      width: 100%; background: var(--navy); color: var(--gold-light);
+      border: none; padding: 1rem; border-radius: 2px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .btn-submit:hover { background: var(--navy-light); }
+    .form-notice { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.75rem; text-align: center; }
+    #form-success {
+      display: none; text-align: center; padding: 3rem 1rem;
+    }
+    #form-success .check {
+      width: 56px; height: 56px; background: var(--navy);
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; margin: 0 auto 1.5rem;
+    }
+    #form-success .check svg { width: 28px; height: 28px; stroke: var(--gold); fill: none; stroke-width: 2; }
+    #form-success h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 0.5rem; }
+    #form-success p { color: var(--text-muted); font-size: 0.9rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      padding: 3rem 2rem 2rem;
+      border-top: 1px solid rgba(201,168,76,0.2);
+    }
+    .footer-inner { max-width: 1140px; margin: 0 auto; }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem; margin-bottom: 2.5rem; }
+    .footer-brand .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; color: var(--gold-light); font-weight: 700;
+    }
+    .footer-brand p { font-size: 0.83rem; color: rgba(255,255,255,0.4); margin-top: 0.5rem; max-width: 280px; line-height: 1.6; }
+    .footer-nav { display: flex; gap: 3rem; flex-wrap: wrap; }
+    .footer-col h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold); margin-bottom: 1rem; }
+    .footer-col a { display: block; font-size: 0.83rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--gold-light); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 1.5rem;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-legal { font-size: 0.75rem; color: rgba(255,255,255,0.3); line-height: 1.7; }
+    .footer-legal strong { color: rgba(255,255,255,0.5); }
+    .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+
+    /* ── WA BUTTON ── */
+    .wa-fab {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #25D366; box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .wa-fab:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(37,211,102,0.5); }
+    .wa-fab svg { width: 28px; height: 28px; fill: white; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-wrapper { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-top { flex-direction: column; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      section { padding: 4rem 1.25rem; }
+      .hero-inner { padding: 7rem 1.25rem 3rem; }
+      .hero-stats { gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">AZA<span>Contabilidade Integrada</span></a>
+    <ul class="nav-links">
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#contato">Contato</a></li>
+      <li><a href="https://wa.me/5551984582507" target="_blank" class="nav-cta">WhatsApp</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-lines"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Perícia Contábil &amp; Licitações</div>
+    <h1>Excelência técnica ao<br><em>serviço da Justiça</em><br>e da Administração</h1>
+    <p class="hero-sub">Perícia judicial e extrajudicial, representação em pregões eletrônicos e assessoria técnica em contratações públicas.</p>
+    <div class="hero-actions">
+      <a href="#contato" class="btn-primary">Solicitar consulta</a>
+      <a href="#servicos" class="btn-outline">Nossos serviços</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">850+</div>
+        <div class="stat-label">Nomeações periciais</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">60+</div>
+        <div class="stat-label">Comarcas atendidas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Estados + Justiça Federal</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="section-inner">
+    <div class="section-tag">O que fazemos</div>
+    <h2 class="section-title">Soluções técnicas especializadas</h2>
+    <p class="section-lead">Atendemos pessoas físicas, empresas, advogados e órgãos públicos com rigor técnico e respaldo normativo.</p>
+
+    <div class="services-grid">
+
+      <!-- PERÍCIA JUDICIAL -->
+      <div class="service-card">
+        <div class="service-accent"></div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Perícia Judicial Contábil</h3>
+        <p>Atuação como perito nomeado pelo juízo nas Justiças Estadual, Federal, Trabalhista e Eleitoral, com laudos em conformidade com a NBC TP 01.</p>
+        <ul>
+          <li>Elaboração de laudos e pareceres técnicos</li>
+          <li>Esclarecimentos e quesitos periciais</li>
+          <li>Laudos complementares e contraditório</li>
+          <li>Cálculos de liquidação de sentença</li>
+          <li>Casos bancários, trabalhistas e empresariais</li>
+        </ul>
+      </div>
+
+      <!-- PERÍCIA EXTRAJUDICIAL -->
+      <div class="service-card">
+        <div class="service-accent"></div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+        </div>
+        <h3>Perícia Extrajudicial</h3>
+        <p>Análise técnica contábil independente para resolução de conflitos fora do judiciário, auditorias especiais e due diligence.</p>
+        <ul>
+          <li>Parecer técnico contábil independente</li>
+          <li>Revisão de demonstrações financeiras</li>
+          <li>Investigação de fraudes e irregularidades</li>
+          <li>Arbitragem e mediação empresarial</li>
+          <li>Laudos para câmaras de conciliação</li>
+        </ul>
+      </div>
+
+      <!-- PREGOEIRO -->
+      <div class="service-card">
+        <div class="service-accent"></div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M12 12m-1 0a1 1 0 1 0 2 0 1 1 0 1 0-2 0"/><path d="M8 12H4M20 12h-4"/></svg>
+        </div>
+        <h3>Pregoeiro e Suporte em Licitações</h3>
+        <p>Representação técnica e estratégica em pregões eletrônicos, com domínio completo da Lei 14.133/2021 e plataformas governamentais.</p>
+        <ul>
+          <li>Elaboração de propostas e documentação</li>
+          <li>Participação em sessões de pregão eletrônico</li>
+          <li>Análise de editais e mapeamento de riscos</li>
+          <li>Recursos administrativos e impugnações</li>
+          <li>Contratos com municípios e estados</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="section-inner">
+    <div class="section-tag">Quem somos</div>
+    <h2 class="section-title">Expertise construída<br>em campo</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>A AZA Contabilidade Integrada é um escritório especializado em perícia contábil judicial e extrajudicial e em contratações públicas, com atuação em múltiplos estados brasileiros e na Justiça Federal.</p>
+        <p>Com mais de 850 nomeações periciais em mais de 60 comarcas, o escritório acumula experiência sólida em casos bancários, trabalhistas, empresariais e de direito público, entregando laudos de alta qualidade técnica com respaldo nas normas do CFC e do IBPJUD.</p>
+        <p>Na área de licitações, atua estrategicamente em pregões eletrônicos sob a Lei 14.133/2021, com contratos firmados junto a entes públicos de diversas regiões.</p>
+        <div class="about-highlights">
+          <div class="highlight-item"><strong>NBC TP 01</strong><span>Norma técnica aplicada</span></div>
+          <div class="highlight-item"><strong>Lei 14.133</strong><span>Licitações e contratos</span></div>
+          <div class="highlight-item"><strong>CRC-RS</strong><span>Registro ativo</span></div>
+          <div class="highlight-item"><strong>IBPJUD</strong><span>Res. 001/2024</span></div>
+        </div>
+      </div>
+      <div class="about-credentials">
+        <div class="credential-item">
+          <div class="label">Responsável técnico</div>
+          <div class="value">Francisco Antunes Zancanaro de Abreu</div>
+          <div class="detail">Contador | CRC-RS 011015/O-8</div>
+        </div>
+        <div class="credential-item">
+          <div class="label">Formação</div>
+          <div class="value">Ciências Contábeis, Administração, Direito</div>
+          <div class="detail">Especialização em Controladoria, Forense e Gestão Pública</div>
+        </div>
+        <div class="credential-item">
+          <div class="label">Jurisdições</div>
+          <div class="value">Rio Grande do Sul, São Paulo, Minas Gerais, Paraná e outros</div>
+          <div class="detail">Inclusive Justiça Federal</div>
+        </div>
+        <div class="credential-item">
+          <div class="label">Sede</div>
+          <div class="value">Viamão/RS — Região Metropolitana de Porto Alegre</div>
+          <div class="detail">Atendimento presencial e remoto em todo o Brasil</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="section-inner">
+    <div class="section-tag">Fale conosco</div>
+    <h2 class="section-title">Entre em contato</h2>
+    <p class="section-lead">Envie sua dúvida, solicite um orçamento ou agende uma consulta técnica.</p>
+
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <p>Atendemos advogados, empresas, pessoas físicas e órgãos públicos. Resposta em até 24 horas úteis.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.14 14 19.79 19.79 0 0 1 1.07 5.36 2 2 0 0 1 3.04 3H6a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 18z"/></svg>
+            </div>
+            <div>
+              <div class="ci-label">WhatsApp</div>
+              <a href="https://wa.me/5551984582507" target="_blank"><div class="ci-value">(51) 98458-2507</div></a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="ci-label">E-mail</div>
+              <a href="mailto:gerente@azacontabilidadeintegrada.com"><div class="ci-value">gerente@azacontabilidadeintegrada.com</div></a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="ci-label">Localização</div>
+              <div class="ci-value">Viamão/RS — Atendimento nacional</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <form action="https://formspree.io/f/xvzywglb" method="POST" id="form-fields">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome">Nome completo</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="telefone">Telefone / WhatsApp</label>
+              <input type="tel" id="telefone" name="telefone" placeholder="(51) 9 9999-9999">
+            </div>
+            <div class="form-group">
+              <label for="assunto">Área de interesse</label>
+              <select id="assunto" name="assunto" required>
+                <option value="">Selecione...</option>
+                <option>Perícia Judicial Contábil</option>
+                <option>Perícia Extrajudicial</option>
+                <option>Pregão Eletrônico / Licitação</option>
+                <option>Outro assunto</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" placeholder="Descreva brevemente sua necessidade..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Enviar mensagem</button>
+          <p class="form-notice">Ou entre em contato direto via <a href="https://wa.me/5551984582507" target="_blank" style="color: var(--gold);">WhatsApp</a>. Respondemos em até 24h úteis.</p>
+        </form>
+        <div id="form-success">
+          <div class="check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Mensagem enviada!</h3>
+          <p>Obrigado pelo contato. Retornaremos em até 24 horas úteis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">AZA Contabilidade Integrada</div>
+        <p>Escritório especializado em perícia contábil judicial e extrajudicial e contratações públicas. Viamão/RS.</p>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-col">
+          <h4>Serviços</h4>
+          <a href="#servicos">Perícia Judicial</a>
+          <a href="#servicos">Perícia Extrajudicial</a>
+          <a href="#servicos">Pregão Eletrônico</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <a href="https://wa.me/5551984582507" target="_blank">(51) 98458-2507</a>
+          <a href="mailto:gerente@azacontabilidadeintegrada.com">gerente@azacontabilidadeintegrada.com</a>
+          <a href="#contato">Formulário de contato</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <strong>AZA Contabilidade Integrada</strong> &nbsp;|&nbsp;
+        CNPJ: <strong>55.706.108/0001-96</strong> &nbsp;|&nbsp;
+        CRC-RS: <strong>011015/O-8</strong> &nbsp;|&nbsp;
+        CNPC: <strong>6830</strong> &nbsp;|&nbsp;
+        Microempresa — Viamão/RS
+      </div>
+      <div class="footer-copy">© 2025 AZA Contabilidade Integrada. Todos os direitos reservados.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/5551984582507" target="_blank" class="wa-fab" aria-label="Fale pelo WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<script>
+  async function submitForm() {
+    const nome = document.getElementById("nome").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const assunto = document.getElementById("assunto").value;
+    const mensagem = document.getElementById("mensagem").value.trim();
+    const telefone = document.getElementById("telefone").value.trim();
+
+    if (!nome || !email || !assunto || !mensagem) {
+      alert("Por favor, preencha todos os campos obrigatórios.");
+      return;
+    }
+
+    const btn = document.querySelector(".btn-submit");
+    btn.textContent = "Enviando...";
+    btn.disabled = true;
+
+    try {
+      const response = await fetch("https://formspree.io/f/xvzywglb", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({ nome, email, telefone, assunto, mensagem })
+      });
+
+      if (response.ok) {
+        document.getElementById("form-fields").style.display = "none";
+        document.getElementById("form-success").style.display = "block";
+      } else {
+        alert("Erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp.");
+        btn.textContent = "Enviar mensagem";
+        btn.disabled = false;
+      }
+    } catch (e) {
+      alert("Erro de conexão. Tente novamente ou entre em contato pelo WhatsApp.");
+      btn.textContent = "Enviar mensagem";
+      btn.disabled = false;
+    }
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
