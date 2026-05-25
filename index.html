@@ -633,30 +633,43 @@
 </a>
 
 <script>
-  function submitForm() {
+  async function submitForm() {
     const nome = document.getElementById('nome').value.trim();
     const email = document.getElementById('email').value.trim();
     const assunto = document.getElementById('assunto').value;
     const mensagem = document.getElementById('mensagem').value.trim();
+    const telefone = document.getElementById('telefone').value.trim();
 
     if (!nome || !email || !assunto || !mensagem) {
       alert('Por favor, preencha todos os campos obrigatórios.');
       return;
     }
 
-    const subject = encodeURIComponent('Contato via site – ' + assunto);
-    const body = encodeURIComponent(
-      'Nome: ' + nome + '\n' +
-      'E-mail: ' + email + '\n' +
-      'Telefone: ' + (document.getElementById('telefone').value || 'não informado') + '\n' +
-      'Assunto: ' + assunto + '\n\n' +
-      'Mensagem:\n' + mensagem
-    );
+    const btn = document.querySelector('.btn-submit');
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
 
-    window.location.href = 'mailto:gerente@azacontabilidadeintegrada.com?subject=' + subject + '&body=' + body;
+    try {
+      const response = await fetch('https://formspree.io/f/xvzywglb', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ nome, email, telefone, assunto, mensagem })
+      });
 
-    document.getElementById('form-fields').style.display = 'none';
-    document.getElementById('form-success').style.display = 'block';
+      if (response.ok) {
+        document.getElementById('form-fields').style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } else {
+        alert('Erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp.');
+        btn.textContent = 'Enviar mensagem';
+        btn.disabled = false;
+      }
+    } catch (e) {
+      alert('Erro de conexão. Tente novamente ou entre em contato pelo WhatsApp.');
+      btn.textContent = 'Enviar mensagem';
+      btn.disabled = false;
+    }
+  }
   }
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
